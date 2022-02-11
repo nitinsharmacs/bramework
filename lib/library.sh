@@ -1,10 +1,11 @@
 source lib/helpers.sh
+
 function bind() {
   local file=$1
 
   if [[ ! -f ${file} ]]; then
     echo "Error : \"$file\" not found"
-    exit 4
+    return 4
   fi
 
   local file_dir_path=$( get_file_dir ${file} )
