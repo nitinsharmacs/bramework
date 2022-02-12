@@ -1,4 +1,4 @@
-build/
-samples/
+/build/
+/samples/
 exp/
 .fullsafe.config
