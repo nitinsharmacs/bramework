@@ -61,3 +61,23 @@ function test_cases_get_file_dir() {
 
     test_get_file_dir "$test_description" "$expected" "$file"
 }
+
+function test_get_filename() {
+    local test_description=$1
+    local expected=$2
+    local file=$3
+
+    local actual=$( get_filename ${file} )
+
+    local test_result=$( verify_expectations "$actual" "$expected" )
+    local inputs="File : $file"
+    append_test_case $test_result "get_filename|$test_description|$inputs|$expected|$actual"
+}
+
+function test_cases_get_filename() {
+    local test_description="should give the file name from give file path"
+    local expected="source.sh"
+    local file="dir/dir2/source.sh"
+
+    test_get_filename "$test_description" "$expected" "$file"
+}

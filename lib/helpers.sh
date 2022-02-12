@@ -38,3 +38,9 @@ function search_element() {
 	echo -1
 	return 4
 }
+
+function get_filename() {
+  local file=$1
+
+  echo "${file##*/}"
+}
