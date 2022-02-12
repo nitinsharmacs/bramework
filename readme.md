@@ -7,7 +7,7 @@ Development framework for shell scripting.
 2. brm build entry_file
 3. brm deploy
 
-### brm run <entry_file> <args...>
+### brm run <entry_file> [args...]
 Entry file should be the main file which is entry point for all other utilities.
 It'll create a single file of all sourced files and run it.
 
