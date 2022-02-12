@@ -1,11 +1,14 @@
 #! /bin/bash
-
 source lib/library.sh
 
-function build() {
-	local file_path=$1
+function main() {
+  local command=$1
+  local entry_file=$2
+  local args=("${@:3}")
 
-
+  if [[ ${command} == "run" ]]; then
+    run "${entry_file}" "${args[@]}"
+  fi
 }
 
-build $1
+main "${@}"

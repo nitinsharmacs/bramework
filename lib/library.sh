@@ -60,7 +60,7 @@ function run() {
   local binded_file="${temp_dir}/${filename}"
   bind "${file}" 1> "${binded_file}"
  
-  echo "Running script"
+  echo -e "Running script\n\n"
   chmod +x "${binded_file}"
   "${binded_file}" "${@:2}"
 }
