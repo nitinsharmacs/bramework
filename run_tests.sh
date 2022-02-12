@@ -17,6 +17,7 @@ function run_all_tests() {
 	IFS=$'\n'
   for test_case in ${test_cases[@]}
   do
+    IFS=${OLDIFS}
     ${test_case}
   done
   IFS=${OLDIFS}

@@ -20,3 +20,21 @@ function get_file_dir() {
   
   echo "${file_dir}"
 }
+
+function search_element() {
+	local searching_element=$1
+	local array=("${@:2}")
+
+	local element_index=0
+	local array_ele
+	for array_ele in "${array[@]}"
+	do
+		if grep -q "$searching_element" <<< $array_ele ; then
+			echo $element_index
+			return 0
+		fi
+		element_index=$(( $element_index + 1 ))
+	done
+	echo -1
+	return 4
+}

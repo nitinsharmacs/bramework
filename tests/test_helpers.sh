@@ -1,4 +1,4 @@
-source lib/helpers.sh
+source ../lib/helpers.sh
 
 function test_is_source() {
     local test_description=$1
@@ -6,7 +6,7 @@ function test_is_source() {
     local inst=$3
 
     local actual
-    is_source ${inst}
+    is_source "${inst}"
     actual=$?
 
     local test_result=$( verify_expectations "$actual" "$expected" )
@@ -27,7 +27,7 @@ function test_get_sourced_file() {
     local expected=$2
     local inst=$3
 
-    local actual=$( get_sourced_file ${inst} )
+    local actual=$( get_sourced_file "${inst}" )
 
     local test_result=$( verify_expectations "$actual" "$expected" )
     local inputs="Instruction : $inst"
