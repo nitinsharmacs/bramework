@@ -2,7 +2,6 @@
 Development framework for shell scripting.
 
 ## Available commands
-
 1. brm run entry_file
 2. brm build entry_file
 3. brm deploy
@@ -18,6 +17,10 @@ It'll create an optamised single file in **build** directory in the project.
 1. It'll copy the builded file to specified bin location.
 2. Set the executable permission
 
+## Limitations
+Followings are not supported
+1. case statements
+2. multiline variables
 
 
 
