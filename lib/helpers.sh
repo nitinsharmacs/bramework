@@ -44,3 +44,7 @@ function get_filename() {
 
   echo "${file##*/}"
 }
+
+function trim() {
+  sed "s:^ *::;s:^\t*::;s: *$::;s:\t*$::" <<< "${1}"
+}

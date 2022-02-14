@@ -8,8 +8,8 @@ source tests/test_helpers.sh
 function run_all_tests() {
   local test_dir="tests"
   local test_files=()
-  test_files[0]="${test_dir}/test_library.sh"
-  test_files[1]="${test_dir}/test_helpers.sh"
+  test_files[0]="${test_dir}/test_helpers.sh"
+  test_files[1]="${test_dir}/test_library.sh"
 
   local test_cases=($(get_test_cases "${test_files[@]}"))
 

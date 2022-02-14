@@ -81,3 +81,29 @@ function test_cases_get_filename() {
 
     test_get_filename "$test_description" "$expected" "$file"
 }
+
+function test_trim() {
+    local test_description=$1
+    local expected=$2
+    local line=$3
+
+    local actual=$( trim ${line} )
+
+    local test_result=$( verify_expectations "$actual" "$expected" )
+    local inputs="Line : $line"
+    append_test_case $test_result "trim|$test_description|$inputs|$expected|$actual"
+}
+
+function test_cases_trim() {
+    local test_description="should remove starting and trailing spaces"
+    local expected="hello"
+    local line="  hello   "
+
+    test_trim "$test_description" "$expected" "$line"
+
+    test_description="should remove starting and trailing tabs"
+    expected="hello"
+    line="    hello  "
+
+    test_trim "$test_description" "$expected" "$line"
+}

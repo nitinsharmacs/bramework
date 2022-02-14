@@ -65,6 +65,48 @@ function test_cases_bind() {
   test_bind "$test_description" "$expected" "${expected_file}" "$entry_file"
 }
 
+function test_minify() {
+  local test_description=$1
+  local expected=$2
+  local expected_file=$3
+  local file=$4
+  
+  local content=$( cat "${file}" )
+  $( minify "${content}" &> "${TEST_DATA}/minify/actual" )
+
+  local actual_file="${TEST_DATA}/minify/actual"
+  local actual
+  diff ${expected_file} ${actual_file} &> /dev/null
+  actual=$?
+    
+  local test_result=$( verify_expectations "$actual" "$expected" )
+  local inputs="File : $file"
+  append_test_case $test_result "minify|$test_description|$inputs|$expected|$actual"
+}
+
+function test_cases_minify() {
+  local test_description="should minify if statements"
+  local expected=0
+  local expected_file="${TEST_DATA}/minify/if/expected.sh"
+  local file="${TEST_DATA}/minify/if/source.sh"
+
+  test_minify "$test_description" "$expected" "${expected_file}" "$file"
+
+  test_description="should minify loops"
+  expected=0
+  expected_file="${TEST_DATA}/minify/loops/expected.sh"
+  file="${TEST_DATA}/minify/loops/source.sh"
+
+  test_minify "$test_description" "$expected" "${expected_file}" "$file"
+
+  test_description="should minify function"
+  expected=0
+  expected_file="${TEST_DATA}/minify/function/expected.sh"
+  file="${TEST_DATA}/minify/function/source.sh"
+
+  test_minify "$test_description" "$expected" "${expected_file}" "$file"
+}
+
 function test_run() {
   local test_description=$1
   local expected=$2

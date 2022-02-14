@@ -8,6 +8,8 @@ function main() {
 
   if [[ ${command} == "run" ]]; then
     run "${entry_file}" "${args[@]}"
+  elif [[ ${command} == "build" ]]; then
+    build "${entry_file}"
   fi
 }
 

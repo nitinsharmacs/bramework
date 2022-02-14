@@ -1,3 +1,4 @@
 /samples/
 exp/
 .fullsafe.config
+.DS_Store
