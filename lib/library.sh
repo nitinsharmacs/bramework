@@ -105,9 +105,11 @@ function build() {
 
   echo "Binding files"
   local binded_content
+  local bind_status
   binded_content="$(bind "${file}")"
-  if [[ $? -ne 0 ]]; then
-    exit $?
+  bind_status=$?
+  if [[ ${bind_status} -ne 0 ]]; then
+    exit ${bind_status}
   fi
  
   echo "Creating build file"
