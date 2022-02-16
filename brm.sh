@@ -3,13 +3,14 @@ source lib/library.sh
 
 function main() {
   local command=$1
-  local entry_file=$2
-  local args=("${@:3}")
+  local args=("${@:2}")
 
   if [[ ${command} == "run" ]]; then
-    run "${entry_file}" "${args[@]}"
+    run "${args[@]}"
   elif [[ ${command} == "build" ]]; then
-    build "${entry_file}"
+    build "${args[@]}"
+  elif [[ ${command} == "deploy" ]]; then
+    deploy "${args[@]}"
   fi
 }
 
