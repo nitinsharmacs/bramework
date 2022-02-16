@@ -53,6 +53,11 @@ function build() {
 function deploy() {
   local location=$1
 
+  if [[ -z $location ]]; then
+    echo "Enter a deploy location" >> /dev/stderr
+    return 1
+  fi
+
   local file
   file=$( ls build 2> /dev/null )
   if [[ $? -ne 0 || -z $file ]]; then
